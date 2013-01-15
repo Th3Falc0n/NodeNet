@@ -1,0 +1,22 @@
+Protocol specification:
+
+#   Name       Direction           Parameters                               Packetsize        Info
+
+0   Keep Alive Bidirectional                                                1                 Umimplemented
+
+1   Handshake  Client->Server      1: byte[8] unique address                1
+               Server->Client      1: byte answer code (0 = ok, 1 = inuse)  1
+               
+2   Error      Server->Client      1: error code (see error code list)      1 
+
+127 Cli->Cli   Client-Server       1: byte length 8: destination addr       1+n               Really important ;)
+                                   16: the cli->cli packet                        
+                                   
+Client to Client specification:
+
+INDEX SIZE USE
+1     1B   Magic Number - always 127
+2     1B   Additional Blocks
+3     2B   Sub ID
+5     4B   Packet ID
+8     8B   From ADDR
