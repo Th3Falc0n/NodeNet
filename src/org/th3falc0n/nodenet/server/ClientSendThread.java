@@ -34,7 +34,7 @@ public class ClientSendThread extends Thread {
       }
       else {
         try {
-	      sleep(100);
+	      sleep(1);
         } catch (InterruptedException e) {
           e.printStackTrace();
         }
