@@ -19,7 +19,7 @@ public class ClientSendThread extends Thread {
   @Override
   public void run() {
     super.run();
-
+    
     while (true) {
       if (aclithr.sendBuffer.size() > 0) { // are there any packet's waiting for
                                            // the client?
@@ -31,6 +31,13 @@ public class ClientSendThread extends Thread {
           logger.println("Exception: " + e.getMessage());
         }
         aclithr.sendBuffer.remove(0);
+      }
+      else {
+        try {
+	      sleep(100);
+        } catch (InterruptedException e) {
+          e.printStackTrace();
+        }
       }
     }
   }
